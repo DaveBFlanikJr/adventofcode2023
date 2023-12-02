@@ -17,7 +17,7 @@ def parsed_games(file):
         sets = re.findall(r'(\d+)\s(blue|red|green)', line)
         game = []
         for pull in sets:
-            game.append((pull[0], pull[1]))
+            game.append([pull[0], pull[1]])
         games.append(game)
     return games
 
