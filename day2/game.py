@@ -33,7 +33,28 @@ def part_one(games):
                 break
     return sum([i for i in range(1, len(games) + 1) if i not in invalid_games])
 
+def part_two(games):
+    total_result = 0
+    for i, set in enumerate(games):
+        max_counts = {
+            "red": 0,
+            "green": 0,
+            "blue": 0
+        }
+        result = 0
+        for pull in set:
+            color, count = pull[1], int(pull[0])
+
+            if max_counts[color] < count:
+                max_counts[color] = count
+        result = max_counts["red"] * max_counts["green"] * max_counts["blue"]
+        total_result += result
+    print(total_result)
 
 # games = parsed_games('test.text')
+# games = parsed_games('data.text')
+# print(part_one(games))
+
+# test_games = parsed_games('test.text')
 games = parsed_games('data.text')
-print(part_one(games))
+part_two(games)
